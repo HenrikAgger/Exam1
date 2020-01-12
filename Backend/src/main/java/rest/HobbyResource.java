@@ -29,7 +29,7 @@ public class HobbyResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
             "pu",
-            "jdbc:mysql://localhost:3307/f2w1fri",
+            "jdbc:mysql://localhost:3307/exam1",
             "dev",
             "ax2",
             EMF_Creator.Strategy.CREATE);
