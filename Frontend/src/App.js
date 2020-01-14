@@ -55,31 +55,31 @@ function App() {
 
   return (
     <div>
-      <AllPersons />
-      <FindPersons />
+      <AllRecipes />
+      <FindRecipes />
     </div>
   );
 }
 
-function AllPersons() {
-  const [persons, setPersons] = useState([]);
+function AllRecipes() {
+  const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    facade.getAllPersons().then(res => setPersons(res));
+    facade.getAllRecipes().then(res => setRecipes(res));
   }, []);
 
   return (
     <li>
-      {persons.map(person => (
-        <ul>{person.email}</ul> // email ?
+      {recipes.map(recipe => (
+        <ul>{recipe.ingredientList}</ul>
       ))}
     </li>
-  );
+  )
 }
 
-function FindPersons() {
+function FindRecipes() {
   const [id, setId] = useState(0);
-  const [person, setPerson] = useState({});
+  const [recipe, setRecipe] = useState({});
 
   const onChange = evt => { 
     setId(evt.target.value);
@@ -87,13 +87,13 @@ function FindPersons() {
 
   const onSubmit = evt => {
     evt.preventDefault();
-    facade.findPerson(id).then(res => setPerson(res));
+    facade.findRecipe(id).then(res => setRecipe(res));
   };
 
-  return (// email
+  return (
     <form onSubmit={onSubmit}> 
-      <input type="number" email="id" placeholder="Id" onChange={onChange} />
-      {person.email}
+      <input type="number" ingredientList="id" placeholder="Id" onChange={onChange} />
+      {recipe.ingredientList}
     </form>
   );
 }

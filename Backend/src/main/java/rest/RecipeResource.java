@@ -8,12 +8,15 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dto.RecipeDTO;
+import entities.Recipe;
 import facades.RecipeFacade;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -24,7 +27,7 @@ import utils.EMF_Creator;
  *
  * @author Henrik
  */
-@Path("receipe")
+@Path("recipe")
 public class RecipeResource {
     
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
@@ -52,6 +55,27 @@ public class RecipeResource {
         return "{\"msg\":\"Recipe created\"}";
     }
     
+    // Edit a Recipe
+    @PUT
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RecipeDTO editRecipe(String recipe){
+        Recipe r = GSON.fromJson(recipe, Recipe.class);
+        RecipeDTO rDTO = new RecipeDTO(r);
+        return FACADE.editRecipe(rDTO);
+    }
+    
+    // Delete a Recipe
+    @DELETE
+    @Path("/delete/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RecipeDTO deleteRecipe(@PathParam("id") Long id){
+        return FACADE.deleteRecipe(id);
+    }
+    
+    
+    
     // Find a Recipe
     @Path("id/{id}")
     @GET
@@ -65,7 +89,7 @@ public class RecipeResource {
     @Path("all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public List<RecipeDTO> getAllRecips() {
+    public List<RecipeDTO> getAllRecipes() {
         return FACADE.getAllRecipes().getAll();
     } 
     

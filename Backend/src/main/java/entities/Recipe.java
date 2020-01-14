@@ -6,10 +6,13 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 
 /**
@@ -28,6 +31,35 @@ public class Recipe implements Serializable {
     private double preparationTime;
     private String directions;
 
+//    @ManyToMany(mappedBy = "menus")
+//    private List<Recipe> menus = new ArrayList();
+//
+//    public List<Recipe> getMenus() {
+//        return menus;
+//    }
+//
+//    public void setMenus(List<Recipe> menus) {
+//        this.menus = menus;
+//    }
+//
+//    @OneToMany()
+//    private Ingredient ingredient;
+//
+//    public Ingredient getIngredient() {
+//        return ingredient;
+//    }
+//
+//    public void setIngredient(Ingredient ingredient) {
+//        this.ingredient = ingredient;
+//    }
+//    @ManyToMany(mappedBy = "recipes")
+//    private List<Menu> menus;
+    
+//    @ManyToMany
+//    private List<Menu> menus = new ArrayList();
+//
+//    
+    
     public Recipe() {
     }
 

@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/securitystarter";
+const URL = "http://localhost:8080/restaurant";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -56,27 +56,36 @@ function ApiFacade() {
     return fetch(URL + "/api/info/user", options).then(handleHttpErrors);
   };
 
-  const getAllPersons = () => {
-    // all? er stien rigtig
-    return fetch(URL + "/api/person/all").then(handleHttpErrors);
+  const getAllRecipes = () => {
+    return fetch(URL + "/api/recipe/all").then(handleHttpErrors);
   };
 
-  const findPerson = (id) => {
-    return fetch(URL + "/api/person/id/" + id).then(handleHttpErrors);
+  const findRecipe = (id) => {
+    return fetch(URL + "/api/recipe/id/" + id).then(handleHttpErrors);
   };
 
-  const createPerson = (person) => {
-    return fetch(URL + "/api/person/create", makeOptions("POST", false, person)).then(handleHttpErrors);
+  const createRecipe = (recipe) => {
+    return fetch(URL + "/api/recipe/create", makeOptions("POST", false, recipe)).then(handleHttpErrors);
   };
+
+  const editRecipe = (recipe) => {
+    return fetch(URL + "/api/recipe/edit", makeOptions("PUT", false, recipe)).then(handleHttpErrors);
+  };  
+
+  const deleteRecipe = (id) => {
+    return fetch(URL + "/api/recipe/delete/" + id).then(handleHttpErrors);
+  };  
 
 
   return {
     logout,
     login,
     fetchData,
-    getAllPersons,
-    findPerson,
-    createPerson
+    getAllRecipes,
+    findRecipe,
+    createRecipe,
+    editRecipe,
+    deleteRecipe,
   };
 }
 

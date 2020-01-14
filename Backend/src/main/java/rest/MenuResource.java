@@ -8,7 +8,6 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dto.MenuDTO;
-import dto.PersonDTO;
 import facades.MenuFacade;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;

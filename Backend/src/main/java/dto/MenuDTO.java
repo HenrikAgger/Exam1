@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class MenuDTO {
 
-    private long id;
+    private Long id;
     private String listRecipes;
     private String weekNo;
     private String year;

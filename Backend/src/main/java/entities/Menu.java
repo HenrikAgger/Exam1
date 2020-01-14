@@ -6,11 +6,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -25,9 +29,33 @@ public class Menu implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String listRecipes;
-    private String weekNo;
-    private String year;
+    private String weekNo; // change to int
+    private String year; // change to int
 
+//    @ManyToMany
+//    private List<Recipe> recipes = new ArrayList();
+//
+//    public List<Recipe> getRecipes() {
+//        return recipes;
+//    }
+//
+//    public void setRecipes(List<Recipe> recipes) {
+//        this.recipes = recipes;
+//    }
+//
+//    @OneToMany
+//    private Ingredient ingredients;
+//
+//    public Ingredient getIngredients() {
+//        return ingredients;
+//    }
+//
+//    public void setIngredients(Ingredient ingredients) {
+//        this.ingredients = ingredients;
+//    }
+    
+    
+    
     public Menu() {
     }
 
@@ -36,6 +64,8 @@ public class Menu implements Serializable {
         this.weekNo = weekNo;
         this.year = year;
     }
+    
+    
 
     public Long getId() {
         return id;
