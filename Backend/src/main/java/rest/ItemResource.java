@@ -40,7 +40,7 @@ public class ItemResource {
         return "{\"msg\":\"Hello World\"}";
     }
     
-    // Create a Menu
+    // Create an Item
     @Path("create")
     @POST
     @Produces({MediaType.APPLICATION_JSON})

@@ -32,7 +32,7 @@ public class Recipe implements Serializable {
     private double preparationTime;
     private String directions;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "recipes")
     private List<Menu> menus = new ArrayList();
     
     public List<Menu> getMenus() {
