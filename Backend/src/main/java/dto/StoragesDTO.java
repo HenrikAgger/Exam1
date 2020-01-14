@@ -5,7 +5,7 @@
  */
 package dto;
 
-import entities.Person;
+import entities.Storage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,20 +13,21 @@ import java.util.List;
  *
  * @author Henrik
  */
-public class PersonsDTO {
-    List<PersonDTO> all = new ArrayList<>();
+public class StoragesDTO {
 
-    public PersonsDTO(List<Person> personEntities) {
-        for (Person personEntity : personEntities) {
-            all.add(new PersonDTO(personEntity));
+    List<StorageDTO> all = new ArrayList<>();
+
+    public StoragesDTO(List<Storage> storageEntities) {
+        for (Storage storageEntity : storageEntities) {
+            all.add(new StorageDTO(storageEntity));
         }
     }
 
-    public List<PersonDTO> getAll() {
+    public List<StorageDTO> getAll() {
         return all;
     }
 
-    public void setAll(List<PersonDTO> all) {
+    public void setAll(List<StorageDTO> all) {
         this.all = all;
     }
 }

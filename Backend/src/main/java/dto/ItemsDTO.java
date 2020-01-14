@@ -5,7 +5,7 @@
  */
 package dto;
 
-import entities.Person;
+import entities.Item;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,20 +13,20 @@ import java.util.List;
  *
  * @author Henrik
  */
-public class PersonsDTO {
-    List<PersonDTO> all = new ArrayList<>();
+public class ItemsDTO {
+    List<ItemDTO> all = new ArrayList<>();
 
-    public PersonsDTO(List<Person> personEntities) {
-        for (Person personEntity : personEntities) {
-            all.add(new PersonDTO(personEntity));
+    public ItemsDTO(List<Item> itemEntities) {
+        for (Item itemEntity : itemEntities) {
+            all.add(new ItemDTO(itemEntity));
         }
     }
 
-    public List<PersonDTO> getAll() {
+    public List<ItemDTO> getAll() {
         return all;
     }
 
-    public void setAll(List<PersonDTO> all) {
+    public void setAll(List<ItemDTO> all) {
         this.all = all;
     }
 }

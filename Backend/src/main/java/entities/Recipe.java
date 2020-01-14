@@ -10,18 +10,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Henrik
  */
 @Entity
+@NamedQuery(name = "Recipe.deleteAllRows", query = "DELETE from Recipe")
 public class Recipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String ingradientList;
+    private double preparationTime;
+    private String directions;
+
+    public Recipe() {
+    }
+
+    public Recipe(String ingradientList, double preparationTime, String directions) {
+        this.ingradientList = ingradientList;
+        this.preparationTime = preparationTime;
+        this.directions = directions;
+    }
 
     public Long getId() {
         return id;
@@ -31,29 +45,29 @@ public class Recipe implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public String getIngradientList() {
+        return ingradientList;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Recipe)) {
-            return false;
-        }
-        Recipe other = (Recipe) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setIngradientList(String ingradientList) {
+        this.ingradientList = ingradientList;
     }
 
-    @Override
-    public String toString() {
-        return "entities.Recipe[ id=" + id + " ]";
+    public double getPreparationTime() {
+        return preparationTime;
     }
+
+    public void setPreparationTime(double preparationTime) {
+        this.preparationTime = preparationTime;
+    }
+
+    public String getDirections() {
+        return directions;
+    }
+
+    public void setDirections(String directions) {
+        this.directions = directions;
+    }
+
     
 }

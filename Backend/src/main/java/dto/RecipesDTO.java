@@ -5,7 +5,7 @@
  */
 package dto;
 
-import entities.Person;
+import entities.Recipe;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,20 +13,20 @@ import java.util.List;
  *
  * @author Henrik
  */
-public class PersonsDTO {
-    List<PersonDTO> all = new ArrayList<>();
+public class RecipesDTO {
+            List<RecipeDTO> all = new ArrayList<>();
 
-    public PersonsDTO(List<Person> personEntities) {
-        for (Person personEntity : personEntities) {
-            all.add(new PersonDTO(personEntity));
+    public RecipesDTO(List<Recipe> recipeEntities) {
+        for (Recipe recipeEntity : recipeEntities) {
+            all.add(new RecipeDTO(recipeEntity));
         }
     }
 
-    public List<PersonDTO> getAll() {
+    public List<RecipeDTO> getAll() {
         return all;
     }
 
-    public void setAll(List<PersonDTO> all) {
+    public void setAll(List<RecipeDTO> all) {
         this.all = all;
     }
 }

@@ -10,19 +10,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Henrik
  */
 @Entity
+@NamedQuery(name = "Ingredient deleteAllRows", query = "DELETE from Ingredient")
 public class Ingredient implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private double amount;
 
+    public Ingredient() {
+    }
+
+    public Ingredient(int amount) {
+        this.amount = amount;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -31,29 +41,14 @@ public class Ingredient implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public double getAmount() {
+        return amount;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Ingredient)) {
-            return false;
-        }
-        Ingredient other = (Ingredient) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
-    @Override
-    public String toString() {
-        return "entities.Ingredient[ id=" + id + " ]";
-    }
+
     
 }
