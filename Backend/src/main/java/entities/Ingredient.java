@@ -12,8 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -29,9 +29,38 @@ public class Ingredient implements Serializable {
     private Long id;
     private double amount;
     
+    @ManyToOne
+    private Recipe recipes;
+    
+    public Recipe getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(Recipe recipes) {
+        this.recipes = recipes;
+    }    
+
+    
+    @ManyToOne
+    private Item item;
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
     
     
     
+    
+
+
+
+    
+    
+            
     
     public Ingredient() {
     }

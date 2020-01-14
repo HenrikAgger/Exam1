@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -32,29 +31,17 @@ public class Menu implements Serializable {
     private String weekNo; // change to int
     private String year; // change to int
 
-//    @ManyToMany
-//    private List<Recipe> recipes = new ArrayList();
-//
-//    public List<Recipe> getRecipes() {
-//        return recipes;
-//    }
-//
-//    public void setRecipes(List<Recipe> recipes) {
-//        this.recipes = recipes;
-//    }
-//
-//    @OneToMany
-//    private Ingredient ingredients;
-//
-//    public Ingredient getIngredients() {
-//        return ingredients;
-//    }
-//
-//    public void setIngredients(Ingredient ingredients) {
-//        this.ingredients = ingredients;
-//    }
-    
-    
+    @ManyToMany
+    private List<Recipe> recipes = new ArrayList();
+
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = recipes;
+    }
+
     
     public Menu() {
     }

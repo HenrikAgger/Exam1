@@ -26,9 +26,11 @@ public class ApplicationConfig extends Application {
         resources.add(org.glassfish.jersey.jsonb.internal.JsonBindingProvider.class);
         resources.add(org.glassfish.jersey.server.wadl.internal.WadlResource.class);
         resources.add(rest.DemoResource.class);
+        resources.add(rest.IngredientResource.class);
+        resources.add(rest.ItemResource.class);
         resources.add(rest.MenuResource.class);
         resources.add(rest.RecipeResource.class);
-        resources.add(rest.RenameMeResource.class);
+        resources.add(rest.Storage.class);
         resources.add(rest.SwappiResource.class);
         resources.add(security.JWTAuthenticationFilter.class);
         resources.add(security.LoginEndpoint.class);

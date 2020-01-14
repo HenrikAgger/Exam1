@@ -11,7 +11,6 @@ import entities.Recipe;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import utils.EMF_Creator;
 
 /**
  *
@@ -115,17 +114,10 @@ public class RecipeFacade {
         } finally {
             em.close();
         }
-
     }
     
-    public static void main(String[] args) {
-        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.CREATE);
-        RecipeFacade rf = RecipeFacade.getRecipeFacade(emf);
-        System.out.println(rf.getRecipe(1L));
-        
-        
-        
-    }
-    
-    
+//    public static void main(String[] args) {
+//        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.CREATE);
+//        RecipeFacade rf = RecipeFacade.getRecipeFacade(emf);
+//    }
 }
