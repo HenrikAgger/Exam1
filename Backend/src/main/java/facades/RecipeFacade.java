@@ -44,7 +44,7 @@ public class RecipeFacade {
     // Create a Recipe
     public RecipeDTO addRecipe(RecipeDTO r){
         EntityManager em = getEntityManager();
-        Recipe recipe = new Recipe(r.getIngradientList(), r.getPreparationTime(), r.getDirections());
+        Recipe recipe = new Recipe(r.getIngredientList(), r.getPreparationTime(), r.getDirections());
         try{
             em.getTransaction().begin();
             em.persist(recipe);

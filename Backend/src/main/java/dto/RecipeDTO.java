@@ -13,20 +13,21 @@ import java.util.Objects;
  * @author Henrik
  */
 public class RecipeDTO {
-        private Long id;
-    private String ingradientList;
+
+    private Long id;
+    private String ingredientList;
     private double preparationTime;
     private String directions;
 
     public RecipeDTO(Recipe r) {
-        this.ingradientList = r.getIngradientList();
+        this.ingredientList = r.getIngredientList();
         this.preparationTime = r.getPreparationTime();
         this.directions = r.getDirections();
         this.id = id;
     }
 
-    public RecipeDTO(String ingradientList, double preparationTime, String directions) {
-        this.ingradientList = ingradientList;
+    public RecipeDTO(String ingredientList, double preparationTime, String directions) {
+        this.ingredientList = ingredientList;
         this.preparationTime = preparationTime;
         this.directions = directions;
     }
@@ -39,12 +40,12 @@ public class RecipeDTO {
         this.id = id;
     }
 
-    public String getIngradientList() {
-        return ingradientList;
+    public String getIngredientList() {
+        return ingredientList;
     }
 
-    public void setIngradientList(String ingradientList) {
-        this.ingradientList = ingradientList;
+    public void setIngredientList(String ingredientList) {
+        this.ingredientList = ingredientList;
     }
 
     public double getPreparationTime() {
@@ -66,10 +67,10 @@ public class RecipeDTO {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.id);
-        hash = 83 * hash + Objects.hashCode(this.ingradientList);
-        hash = 83 * hash + (int) (Double.doubleToLongBits(this.preparationTime) ^ (Double.doubleToLongBits(this.preparationTime) >>> 32));
-        hash = 83 * hash + Objects.hashCode(this.directions);
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.ingredientList);
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.preparationTime) ^ (Double.doubleToLongBits(this.preparationTime) >>> 32));
+        hash = 53 * hash + Objects.hashCode(this.directions);
         return hash;
     }
 
@@ -88,7 +89,7 @@ public class RecipeDTO {
         if (Double.doubleToLongBits(this.preparationTime) != Double.doubleToLongBits(other.preparationTime)) {
             return false;
         }
-        if (!Objects.equals(this.ingradientList, other.ingradientList)) {
+        if (!Objects.equals(this.ingredientList, other.ingredientList)) {
             return false;
         }
         if (!Objects.equals(this.directions, other.directions)) {
@@ -102,9 +103,4 @@ public class RecipeDTO {
 
 
 
-    
-    
-    
-    
-    
 }

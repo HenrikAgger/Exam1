@@ -1,6 +1,6 @@
 package facades;
 
-import entities.Person;
+import entities.Recipe;
 import utils.EMF_Creator;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,12 +15,12 @@ import utils.EMF_Creator.Strategy;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class PersonFacadeTest {
+public class RecipeFacadeTest {
 
     private static EntityManagerFactory emf;
-    private static PersonFacade facade;
+    private static RecipeFacade facade;
 
-    public PersonFacadeTest() {
+    public RecipeFacadeTest() {
     }
 
     //@BeforeAll
@@ -31,7 +31,7 @@ public class PersonFacadeTest {
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
-        facade = PersonFacade.getPersonFacade(emf);
+        facade = RecipeFacade.getRecipeFacade(emf);
     }
 
     /*   **** HINT **** 
@@ -43,7 +43,7 @@ public class PersonFacadeTest {
     @BeforeAll
     public static void setUpClassV2() {
        emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST,Strategy.DROP_AND_CREATE);
-       facade = PersonFacade.getPersonFacade(emf);
+       facade = RecipeFacade.getRecipeFacade(emf);
     }
 
     @AfterAll
@@ -58,9 +58,9 @@ public class PersonFacadeTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Person.deleteAllRows").executeUpdate();
-            em.persist(new Person("Some txt", "More text", "firstName", "lastName"));
-            em.persist(new Person("aaa", "bbb", "ccc", "ddd"));
+            em.createNamedQuery("Recipe.deleteAllRows").executeUpdate();
+            em.persist(new Recipe("Some txt", 2 , "firstName"));
+            em.persist(new Recipe("aaa", 3, "ccc"));
 
             em.getTransaction().commit();
         } finally {
@@ -76,7 +76,7 @@ public class PersonFacadeTest {
     // TODO: Delete or change this method 
     @Test
     public void testAFacadeMethod() {
-        assertEquals(2, facade.getPersonCount(), "Expects two rows in the database");
+        assertEquals(2, facade.getRecipeCount(), "Expects two rows in the database");
     }
 
 }

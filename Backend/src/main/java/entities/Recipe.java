@@ -24,15 +24,15 @@ public class Recipe implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String ingradientList;
+    private String ingredientList;
     private double preparationTime;
     private String directions;
 
     public Recipe() {
     }
 
-    public Recipe(String ingradientList, double preparationTime, String directions) {
-        this.ingradientList = ingradientList;
+    public Recipe(String ingredientList, double preparationTime, String directions) {
+        this.ingredientList = ingredientList;
         this.preparationTime = preparationTime;
         this.directions = directions;
     }
@@ -45,12 +45,12 @@ public class Recipe implements Serializable {
         this.id = id;
     }
 
-    public String getIngradientList() {
-        return ingradientList;
+    public String getIngredientList() {
+        return ingredientList;
     }
 
-    public void setIngradientList(String ingradientList) {
-        this.ingradientList = ingradientList;
+    public void setIngredientList(String ingredientList) {
+        this.ingredientList = ingredientList;
     }
 
     public double getPreparationTime() {
