@@ -45,7 +45,7 @@ public class MenuFacade {
     // Create a Menu
     public MenuDTO addMenu(MenuDTO m) {
         EntityManager em = getEntityManager();
-        Menu menu = new Menu(m.getListRecipes(), m.getWeekNo(), m.getYear());
+        Menu menu = new Menu(m.getListRecipes(), m.getWeekNo(), m.getTheYear());
         try {
             em.getTransaction().begin();
             em.persist(menu);

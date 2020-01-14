@@ -17,19 +17,19 @@ public class MenuDTO {
     private Long id;
     private String listRecipes;
     private String weekNo;
-    private String year;
+    private String theYear;
 
     public MenuDTO(Menu m) {
         this.listRecipes = m.getListRecipes();
         this.weekNo = m.getWeekNo();
-        this.year = m.getYear();
+        this.theYear = m.getTheYear();
         this.id = m.getId();
     }
 
-    public MenuDTO(String listRecipes, String weekNo, String year) {
+    public MenuDTO(String listRecipes, String weekNo, String theYear) {
         this.listRecipes = listRecipes;
         this.weekNo = weekNo;
-        this.year = year;
+        this.theYear = theYear;
     }
 
     public Long getId() {
@@ -56,12 +56,12 @@ public class MenuDTO {
         this.weekNo = weekNo;
     }
 
-    public String getYear() {
-        return year;
+    public String getTheYear() {
+        return theYear;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setTheYear(String theYear) {
+        this.theYear = theYear;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class MenuDTO {
         hash = 79 * hash + Objects.hashCode(this.id);
         hash = 79 * hash + Objects.hashCode(this.listRecipes);
         hash = 79 * hash + Objects.hashCode(this.weekNo);
-        hash = 79 * hash + Objects.hashCode(this.year);
+        hash = 79 * hash + Objects.hashCode(this.theYear);
         return hash;
     }
 
@@ -92,7 +92,7 @@ public class MenuDTO {
         if (!Objects.equals(this.weekNo, other.weekNo)) {
             return false;
         }
-        if (!Objects.equals(this.year, other.year)) {
+        if (!Objects.equals(this.theYear, other.theYear)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {

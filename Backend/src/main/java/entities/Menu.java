@@ -29,7 +29,7 @@ public class Menu implements Serializable {
     private Long id;
     private String listRecipes;
     private String weekNo; 
-    private String year; 
+    private String theYear; 
 
     @ManyToMany
     private List<Recipe> recipes = new ArrayList();
@@ -46,10 +46,10 @@ public class Menu implements Serializable {
     public Menu() {
     }
 
-    public Menu(String listRecipes, String weekNo, String year) {
+    public Menu(String listRecipes, String weekNo, String theYear) {
         this.listRecipes = listRecipes;
         this.weekNo = weekNo;
-        this.year = year;
+        this.theYear = theYear;
     }
     
     
@@ -78,11 +78,11 @@ public class Menu implements Serializable {
         this.weekNo = weekNo;
     }
 
-    public String getYear() {
-        return year;
+    public String getTheYear() {
+        return theYear;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setTheYear(String theYear) {
+        this.theYear = theYear;
     }
 }
