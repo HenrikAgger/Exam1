@@ -28,8 +28,8 @@ public class Menu implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String listRecipes;
-    private String weekNo; // change to int
-    private String year; // change to int
+    private String weekNo; 
+    private String year; 
 
     @ManyToMany
     private List<Recipe> recipes = new ArrayList();
@@ -85,8 +85,4 @@ public class Menu implements Serializable {
     public void setYear(String year) {
         this.year = year;
     }
-
-    
-
-    
 }

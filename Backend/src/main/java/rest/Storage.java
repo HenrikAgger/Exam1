@@ -40,7 +40,7 @@ public class Storage {
         return "{\"msg\":\"Hello World\"}";
     }
     
-    // Create a Menu
+    // Create a Storage
     @Path("create")
     @POST
     @Produces({MediaType.APPLICATION_JSON})
@@ -49,4 +49,12 @@ public class Storage {
         FACADE.addStorage(storageDTO);
         return "{\"msg\":\"Storage created\"}";
     }
+    
+    
+    
+    
+    
+    
+    
+    
 }

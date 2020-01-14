@@ -6,11 +6,14 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,6 +29,17 @@ public class Storage implements Serializable {
     private Long id;
     private double amount;
 
+    @OneToMany
+    private List<Item> items = new ArrayList();
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+    
     public Storage(double amount) {
         this.amount = amount;
     }
@@ -48,6 +62,4 @@ public class Storage implements Serializable {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-
-    
 }

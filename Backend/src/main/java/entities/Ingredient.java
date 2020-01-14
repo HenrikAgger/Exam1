@@ -51,17 +51,7 @@ public class Ingredient implements Serializable {
     public void setItem(Item item) {
         this.item = item;
     }
-    
-    
-    
-    
 
-
-
-    
-    
-            
-    
     public Ingredient() {
     }
 

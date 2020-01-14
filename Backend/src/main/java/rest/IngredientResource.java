@@ -40,7 +40,7 @@ public class IngredientResource {
         return "{\"msg\":\"Hello World\"}";
     }
     
-    // Create a Menu
+    // Create an Ingredient
     @Path("create")
     @POST
     @Produces({MediaType.APPLICATION_JSON})

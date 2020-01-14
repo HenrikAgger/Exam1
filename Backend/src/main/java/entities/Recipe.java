@@ -54,8 +54,6 @@ public class Recipe implements Serializable {
         this.ingredients = ingredients;
     }
 
-    
-
 
     public Recipe() {
     }
@@ -97,6 +95,4 @@ public class Recipe implements Serializable {
     public void setDirections(String directions) {
         this.directions = directions;
     }
-
-    
 }
