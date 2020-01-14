@@ -29,7 +29,7 @@ public class Ingredient implements Serializable {
     public Ingredient() {
     }
 
-    public Ingredient(int amount) {
+    public Ingredient(double amount) {
         this.amount = amount;
     }
     

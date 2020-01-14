@@ -5,9 +5,9 @@
  */
 package facades;
 
-import entities.Hobby;
-import dto.HobbyDTO;
-import dto.HobbiesDTO;
+import dto.ItemDTO;
+import dto.ItemsDTO;
+import entities.Item;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,13 +16,12 @@ import javax.persistence.EntityManagerFactory;
  *
  * @author Henrik
  */
-public class HobbyFacade {
-
-    private static HobbyFacade instance;
+public class ItemFacade {
+    private static ItemFacade instance;
     private static EntityManagerFactory emf;
 
     //Private Constructor to ensure Singleton
-    private HobbyFacade() {
+    private ItemFacade() {
     }
 
     /**
@@ -30,10 +29,10 @@ public class HobbyFacade {
      * @param _emf
      * @return an instance of this facade class.
      */
-    public static HobbyFacade getHobbyFacade(EntityManagerFactory _emf) {
+    public static ItemFacade getItemFacade(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
-            instance = new HobbyFacade();
+            instance = new ItemFacade();
         }
         return instance;
     }
@@ -42,52 +41,52 @@ public class HobbyFacade {
         return emf.createEntityManager();
     }
 
-    // Create a Hobby
-    public HobbyDTO addHobby(HobbyDTO h) {
+    // Create an Item
+    public ItemDTO addItem(ItemDTO i) {
         EntityManager em = getEntityManager();
-        Hobby hobby = new Hobby(h.getName(), h.getDescription());
+        Item item = new Item(i.getName(), i.getPrice());
         try {
             em.getTransaction().begin();
-            em.persist(hobby);
+            em.persist(item);
             em.getTransaction().commit();
         } finally {
             em.close();
         }
-        return new HobbyDTO(hobby);
+        return new ItemDTO(item);
     }
 
-    // Find a Hobby
-    public HobbyDTO getHobby(Long id) {
+    // Find an Item
+    public ItemDTO getItem(Long id) {
         EntityManager em = getEntityManager();
-        Hobby h = em.find(Hobby.class, id);
+        Item i = em.find(Item.class, id);
         try {
-            HobbyDTO hobby = new HobbyDTO(h);
-            return hobby;
+            ItemDTO item = new ItemDTO(i);
+            return item;
         } finally {
             em.close();
         }
     }
 
-    // Get all Hobbies
-    public HobbiesDTO getAllHobbies() {
+    // Get all Items
+    public ItemsDTO getAllItems() {
         EntityManager em = getEntityManager();
         try {
-            List<Hobby> list = em.createQuery("SELECT h FROM Hobby h", Hobby.class).getResultList();
-            return new HobbiesDTO(list);
+            List<Item> list = em.createQuery("SELECT i FROM Item i", Item.class).getResultList();
+            return new ItemsDTO(list);
         } finally {
             em.close();
         }
     }
 
-    // No of Hobbies
-    public long getHobbyCount() {
+    // No of Items
+    public long getItemCount() {
         EntityManager em = emf.createEntityManager();
         try {
-            long hobbyCount = (long) em.createQuery("SELECT COUNT(h) FROM Hobby h").getSingleResult();
-            return hobbyCount;
+            long itemCount = (long) em.createQuery("SELECT COUNT(i) FROM Item i").getSingleResult();
+            return itemCount;
         } finally {
             em.close();
         }
 
-    }
+    }    
 }

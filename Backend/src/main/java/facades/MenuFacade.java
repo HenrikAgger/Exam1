@@ -5,9 +5,9 @@
  */
 package facades;
 
-import entities.Hobby;
-import dto.HobbyDTO;
-import dto.HobbiesDTO;
+import dto.MenuDTO;
+import dto.MenusDTO;
+import entities.Menu;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,13 +16,13 @@ import javax.persistence.EntityManagerFactory;
  *
  * @author Henrik
  */
-public class HobbyFacade {
+public class MenuFacade {
 
-    private static HobbyFacade instance;
+    private static MenuFacade instance;
     private static EntityManagerFactory emf;
 
     //Private Constructor to ensure Singleton
-    private HobbyFacade() {
+    private MenuFacade() {
     }
 
     /**
@@ -30,10 +30,10 @@ public class HobbyFacade {
      * @param _emf
      * @return an instance of this facade class.
      */
-    public static HobbyFacade getHobbyFacade(EntityManagerFactory _emf) {
+    public static MenuFacade getMenuFacade(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
-            instance = new HobbyFacade();
+            instance = new MenuFacade();
         }
         return instance;
     }
@@ -42,49 +42,44 @@ public class HobbyFacade {
         return emf.createEntityManager();
     }
 
-    // Create a Hobby
-    public HobbyDTO addHobby(HobbyDTO h) {
+    // Create a Menu
+    public MenuDTO addMenu(MenuDTO m) {
         EntityManager em = getEntityManager();
-        Hobby hobby = new Hobby(h.getName(), h.getDescription());
+        Menu menu = new Menu(m.getListRecipes(), m.getWeekNo(), m.getYear());
         try {
             em.getTransaction().begin();
-            em.persist(hobby);
+            em.persist(menu);
             em.getTransaction().commit();
         } finally {
             em.close();
         }
-        return new HobbyDTO(hobby);
+        return new MenuDTO(menu);
     }
 
-    // Find a Hobby
-    public HobbyDTO getHobby(Long id) {
+    // Find a Menu
+    public MenuDTO getMenu(Long menu_id) {
         EntityManager em = getEntityManager();
-        Hobby h = em.find(Hobby.class, id);
+        Menu menuDTO = em.find(Menu.class, menu_id);
+        return new MenuDTO(menuDTO);
+    }
+
+    // Get all Menus
+    public MenusDTO getAllMenus() {
+        EntityManager em = getEntityManager();
         try {
-            HobbyDTO hobby = new HobbyDTO(h);
-            return hobby;
+            List<Menu> list = em.createQuery("SELECT m FROM Menu m", Menu.class).getResultList();
+            return new MenusDTO(list);
         } finally {
             em.close();
         }
     }
 
-    // Get all Hobbies
-    public HobbiesDTO getAllHobbies() {
-        EntityManager em = getEntityManager();
-        try {
-            List<Hobby> list = em.createQuery("SELECT h FROM Hobby h", Hobby.class).getResultList();
-            return new HobbiesDTO(list);
-        } finally {
-            em.close();
-        }
-    }
-
-    // No of Hobbies
-    public long getHobbyCount() {
+    // No of Menus
+    public long getMenuCount() {
         EntityManager em = emf.createEntityManager();
         try {
-            long hobbyCount = (long) em.createQuery("SELECT COUNT(h) FROM Hobby h").getSingleResult();
-            return hobbyCount;
+            long menuCount = (long) em.createQuery("SELECT COUNT(m) FROM Menu m").getSingleResult();
+            return menuCount;
         } finally {
             em.close();
         }
