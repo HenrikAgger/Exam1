@@ -11,6 +11,7 @@ import entities.Recipe;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import utils.EMF_Creator;
 
 /**
  *
@@ -116,8 +117,22 @@ public class RecipeFacade {
         }
     }
     
-//    public static void main(String[] args) {
-//        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.CREATE);
-//        RecipeFacade rf = RecipeFacade.getRecipeFacade(emf);
-//    }
+    public void populate() {
+        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.CREATE);
+        EntityManager em = emf.createEntityManager();
+        
+        Recipe recipe1 = new Recipe("Ham, Chease", 20, "some direction 1");
+        Recipe recipe2 = new Recipe("Sausage, Chease", 15, "some direction 2");
+        
+        em.getTransaction().begin();
+        em.persist(recipe1);
+        em.persist(recipe2);
+        em.getTransaction().commit();
+    }
+    
+    
+    
+    
+    
+    
 }

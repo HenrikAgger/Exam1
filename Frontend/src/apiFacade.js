@@ -1,4 +1,5 @@
-const URL = "http://localhost:8080/restaurant";
+//const URL = "http://localhost:8080/restaurant";
+const URL = "https://henriksdomainname.dk/exam1";
 
 function handleHttpErrors(res) {
   if (!res.ok) {

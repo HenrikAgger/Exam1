@@ -20,7 +20,7 @@ import javax.persistence.NamedQuery;
  * @author Henrik
  */
 @Entity
-@NamedQuery(name = "Ingredient deleteAllRows", query = "DELETE from Ingredient")
+@NamedQuery(name = "Ingredient.deleteAllRows", query = "DELETE from Ingredient")
 public class Ingredient implements Serializable {
 
     private static final long serialVersionUID = 1L;

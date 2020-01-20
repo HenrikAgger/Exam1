@@ -19,11 +19,14 @@ public class RecipeDTO {
     private double preparationTime;
     private String directions;
 
+    public RecipeDTO() {
+    }
+
     public RecipeDTO(Recipe r) {
         this.ingredientList = r.getIngredientList();
         this.preparationTime = r.getPreparationTime();
         this.directions = r.getDirections();
-        this.id = id;
+        this.id = r.getId();
     }
 
     public RecipeDTO(String ingredientList, double preparationTime, String directions) {

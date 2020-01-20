@@ -50,9 +50,9 @@ public class RecipeResource {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public String createRecipe(RecipeDTO recipeDTO){
-        FACADE.addRecipe(recipeDTO);
-        return "{\"msg\":\"Recipe created\"}";
+    public RecipeDTO createRecipe(RecipeDTO recipeDTO){
+        RecipeDTO rDTO = FACADE.addRecipe(recipeDTO);
+        return rDTO;
     }
     
     // Edit a Recipe
@@ -83,6 +83,14 @@ public class RecipeResource {
     public RecipeDTO findRecipe(@PathParam("id") Long id) {
         RecipeDTO r = FACADE.getRecipe(id);
         return r;
+    }
+    
+    @Path("populate")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String populate() {
+        FACADE.populate();
+        return "{\"msg\":\"Tables populated\"}";
     }
     
     // Get all Recipes
